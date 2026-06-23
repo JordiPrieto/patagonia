@@ -1,0 +1,173 @@
+/* Estilos Generales con Fondo de Imagen */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    /* Imagen de fondo solicitada */
+    background-image: url('20160107_094159.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Mantiene el fondo quieto al hacer scroll */
+    color: #333;
+    scroll-behavior: smooth; 
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+/* Encabezado */
+header {
+    background: rgba(53, 66, 74, 0.9); /* Fondo semi-transparente para ver la imagen */
+    color: #ffffff;
+    padding: 40px 0;
+    border-bottom: #e8491d 4px solid;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 3em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Navegación */
+nav {
+    background: rgba(70, 89, 98, 0.95);
+    padding: 15px 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #e8491d;
+}
+
+/* Secciones con fondo blanco traslúcido para legibilidad */
+main section {
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.92); /* Permite ver el fondo sutilmente */
+    margin: 30px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    max-width: 900px;
+}
+
+main h2 {
+    text-align: center;
+    color: #35424a;
+    font-size: 2.2em;
+}
+
+/* Banner de Publicidad (Cabañas) */
+.promo-banner {
+    background: linear-gradient(135deg, rgba(232, 73, 29, 0.9) 0%, rgba(53, 66, 74, 0.9) 100%) !important;
+    color: white;
+    text-align: center;
+    border: none;
+}
+
+.promo-content h2 { color: white !important; }
+
+.btn-promo {
+    display: inline-block;
+    background: #fff;
+    color: #e8491d;
+    padding: 12px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+
+.btn-promo:hover {
+    background: #35424a;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Formulario */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.btn-submit {
+    background: #e8491d;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    background: #35424a;
+}
+
+/* Imagen de Ubicación */
+.map-container {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.map-image {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    border-radius: 8px;
+    border: 5px solid #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Footer */
+footer {
+    background: rgba(53, 66, 74, 0.95);
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 50px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .container { width: 95%; }
+    header h1 { font-size: 2em; }
+}

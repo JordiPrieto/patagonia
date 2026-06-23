@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ski & Snow Rental - El Descanso</title>
+    <link rel="stylesheet" href="modo.css">
+</head>
+<body class="fondo-nieve">
+    <header>
+        <div class="container">
+            <h1>Ski & Snow Rental</h1>
+            <p>Equipamiento de alta montaña para tu aventura</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                
+                <li><a href="#contacto">Reservar Equipos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- SECCIÓN DE PUBLICIDAD (Link a Cabañas) -->
+        <section id="publicidad" class="container promo-banner">
+            <div class="promo-content">
+                <h2>¿Necesitas donde dormir?</h2>
+                <p>Completa tu viaje con el mejor alojamiento en Bariloche.</p>
+                <a href="https://cabbariloche.netlify.app/" target="_blank" class="btn-promo">Alquiler de Cabañas Aquí</a>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE CONTACTO / RESERVA DE EQUIPOS -->
+        <section id="contacto" class="container">
+            <h2>Reserva tu Equipo</h2>
+            <p>Indícanos qué necesitas y prepararemos todo para tu llegada a la montaña.</p>
+            
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo:</label>
+                    <input type="text" id="nombre" name="nombre_cliente" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">WhatsApp / Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono_cliente" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="equipo">Equipo de Interés:</label>
+                    <select id="equipo" name="equipo_interes">
+                        <option value="">-- Seleccione equipo --</option>
+                        <option value="ski_completo">Equipo de Ski Completo</option>
+                        <option value="snow_completo">Equipo de Snowboard Completo</option>
+                        <option value="botas">Solo Botas</option>
+                        <option value="ropa">Ropa de Nieve (Campera/Pantalón)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="fecha">Fecha de Inicio del Alquiler:</label>
+                    <input type="date" id="fecha" name="fecha_alquiler">
+                </div>
+
+                <div class="form-group">
+                    <label for="mensaje">Talles o dudas (Estatura, peso, talle de calzado):</label>
+                    <textarea id="mensaje" name="mensaje_cliente" rows="4" placeholder="Ej: Mido 1.80m, calzo 42..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Solicitar Presupuesto</button>
+            </form>
+
+            <div class="map-container">
+                <h3>Nuestra Base en la Montaña</h3>
+                <img src="locacion.jpeg" alt="Ubicación del Rental" class="map-image">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Ski & Snow Rental "Patagonia Rental". Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
