@@ -1,4 +1,5 @@
 emailjs.init("TIEqcLrCyLBLPkOGZ"); 
+const templateID = 'template_a4kxku3';
 
 const btn = document.getElementById('form-reserva');
 
