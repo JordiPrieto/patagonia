@@ -1,3 +1,5 @@
+emailjs.init("TIEqcLrCyLBLPkOGZ"); 
+
 const btn = document.getElementById('form-reserva');
 
 document.getElementById('form-reserva').addEventListener('submit', function(event) {
