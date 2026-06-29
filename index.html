@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ski & Snow Rental - Patagonia</title>
-    <!-- Asegúrate de que el archivo modo.css exista en la misma carpeta -->
     <link rel="stylesheet" href="modo.css">
-    <!-- Iconos para mejorar la estética -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="fondo-nieve">
-
     <header>
         <div class="container">
             <h1>Sky & Snowboard Rental</h1>
@@ -28,7 +25,6 @@
     </nav>
 
     <main>
-        <!-- SECCIÓN DE PUBLICIDAD (Link a Cabañas) -->
         <section id="publicidad" class="container promo-banner">
             <div class="promo-content">
                 <h2>¿Necesitas donde dormir?</h2>
@@ -37,12 +33,10 @@
             </div>
         </section>
 
-        <!-- SECCIÓN DE CONTACTO / RESERVA DE EQUIPOS -->
         <section id="contacto" class="container">
             <h2>Reserva tu Equipo</h2>
             <p>Indícanos qué necesitas y prepararemos todo para tu llegada a la montaña.</p>
             
-            <!-- FORMULARIO CORREGIDO CON ID PARA EMAILJS -->
             <form id="form-reserva">
                 <div class="form-group">
                     <label for="nombre">Nombre Completo:</label>
@@ -58,10 +52,10 @@
                     <label for="equipo">Equipo de Interés:</label>
                     <select id="equipo" name="equipo_interes" required>
                         <option value="">-- Seleccione equipo --</option>
-                        <option value="Ski Completo">Equipo de Ski Completo</option>
-                        <option value="Snowboard Completo">Equipo de Snowboard Completo</option>
-                        <option value="Solo Botas">Solo Botas</option>
-                        <option value="Ropa de Nieve">Ropa de Nieve (Campera/Pantalón)</option>
+                        <option value="ski_completo">Equipo de Ski Completo</option>
+                        <option value="snow_completo">Equipo de Snowboard Completo</option>
+                        <option value="botas">Solo Botas</option>
+                        <option value="ropa">Ropa de Nieve (Campera/Pantalón)</option>
                     </select>
                 </div>
 
@@ -75,7 +69,7 @@
                     <textarea id="mensaje" name="mensaje_cliente" rows="4" placeholder="Ej: Mido 1.80m, calzo 42..."></textarea>
                 </div>
 
-                <button type="submit" id="btn-enviar" class="btn-submit">Solicitar Presupuesto</button>
+                <button type="submit" class="btn-submit">Solicitar Presupuesto</button>
             </form>
 
             <div class="map-container">
@@ -91,42 +85,43 @@
         </div>
     </footer>
 
-    <!-- 1. CARGAR LA LIBRERÍA DE EMAILJS -->
+    <!-- 1. CARGAR LIBRERÍA EMAILJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
+    <!-- 2. CÓDIGO DE ENVÍO CORREGIDO -->
     <script type="text/javascript">
-        // 2. INICIALIZAR EMAILJS CON TU PUBLIC KEY
         (function() {
-            // REEMPLAZA "TU_PUBLIC_KEY" con la llave que sacas de tu cuenta de EmailJS
-            emailjs.init("TIEqcLrCyLBLPkOGZ");
+            emailjs.init("TIEqcLrCyLBLPkOGZ"); // Tu Public Key
         })();
 
-        // 3. LÓGICA DE ENVÍO
-        const btn = document.getElementById('btn-enviar');
         const formulario = document.getElementById('form-reserva');
+        const btnSubmit = document.querySelector('.btn-submit');
 
         formulario.addEventListener('submit', function(event) {
-            event.preventDefault(); // Evita que la página se recargue
+            event.preventDefault();
 
-            btn.innerText = 'Enviando...';
-            btn.disabled = true;
+            btnSubmit.innerText = 'Enviando...';
+            btnSubmit.disabled = true;
 
-            const serviceID = 'default_service'; // O el ID de tu servicio de mail en EmailJS
-            const templateID = 'TU_TEMPLATE_ID'; // Reemplaza con tu Template ID de EmailJS
+            // ESTOS SON TUS IDS VERIFICADOS
+            const serviceID = 'service_2bilihz';
+            const templateID = 'template_a4kxku3';
+
+            console.log("Enviando con Service:", serviceID, "y Template:", templateID);
 
             emailjs.sendForm(serviceID, templateID, this)
                 .then(() => {
-                    btn.innerText = 'Solicitar Presupuesto';
-                    btn.disabled = false;
-                    alert('✅ ¡Tu solicitud ha sido enviada! Te contactaremos pronto por WhatsApp.');
-                    formulario.reset(); // Limpia el formulario
+                    alert('✅ ¡Solicitud enviada con éxito!');
+                    btnSubmit.innerText = 'Solicitar Presupuesto';
+                    btnSubmit.disabled = false;
+                    formulario.reset();
                 }, (err) => {
-                    btn.innerText = 'Solicitar Presupuesto';
-                    btn.disabled = false;
-                    alert('❌ Hubo un error al enviar: ' + JSON.stringify(err));
+                    alert('❌ Error: ' + JSON.stringify(err));
+                    btnSubmit.innerText = 'Solicitar Presupuesto';
+                    btnSubmit.disabled = false;
+                    console.error("Error completo:", err);
                 });
         });
     </script>
-
 </body>
 </html>
