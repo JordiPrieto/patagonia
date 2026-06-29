@@ -48,6 +48,12 @@
                     <input type="tel" id="telefono" name="telefono_cliente" required>
                 </div>
 
+                <!-- NUEVO CAMPO AGREGADO -->
+                <div class="form-group">
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email_cliente" required>
+                </div>
+
                 <div class="form-group">
                     <label for="equipo">Equipo de Interés:</label>
                     <select id="equipo" name="equipo_interes" required>
@@ -85,43 +91,9 @@
         </div>
     </footer>
 
-    <!-- 1. CARGAR LIBRERÍA EMAILJS -->
+    <!-- CARGAR LIBRERÍA EMAILJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
-    <!-- 2. CÓDIGO DE ENVÍO CORREGIDO -->
-    <script type="text/javascript">
-        (function() {
-            emailjs.init("TIEqcLrCyLBLPkOGZ"); // Tu Public Key
-        })();
-
-        const formulario = document.getElementById('form-reserva');
-        const btnSubmit = document.querySelector('.btn-submit');
-
-        formulario.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            btnSubmit.innerText = 'Enviando...';
-            btnSubmit.disabled = true;
-
-            // ESTOS SON TUS IDS VERIFICADOS
-            const serviceID = 'service_2bilihz';
-            const templateID = 'template_a4kxku3';
-
-            console.log("Enviando con Service:", serviceID, "y Template:", templateID);
-
-            emailjs.sendForm(serviceID, templateID, this)
-                .then(() => {
-                    alert('✅ ¡Solicitud enviada con éxito!');
-                    btnSubmit.innerText = 'Solicitar Presupuesto';
-                    btnSubmit.disabled = false;
-                    formulario.reset();
-                }, (err) => {
-                    alert('❌ Error: ' + JSON.stringify(err));
-                    btnSubmit.innerText = 'Solicitar Presupuesto';
-                    btnSubmit.disabled = false;
-                    console.error("Error completo:", err);
-                });
-        });
-    </script>
+    <!-- TU ARCHIVO JS EXTERNO -->
+    <script src="script.js"></script>
 </body>
 </html>

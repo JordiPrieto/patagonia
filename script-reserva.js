@@ -1,13 +1,12 @@
 // ==========================================
 // CONFIGURACIÓN DE EMAILJS - PATAGONIA RENTAL
-// Versión: 2.0 - Corregida
+// Versión: 3.0 - Incluye Email Cliente
 // ==========================================
 
 // 1. Inicialización con tu Public Key
 emailjs.init("TIEqcLrCyLBLPkOGZ");
 
-// Mensaje en consola para verificar que el script cargó correctamente
-console.log("Sistema de Reserva Patagonia Rental: Cargado v2.0");
+console.log("Sistema de Reserva Patagonia Rental: Cargado v3.0");
 
 document.addEventListener('DOMContentLoaded', function() {
     const formulario = document.getElementById('form-reserva');
@@ -25,12 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const serviceID = 'service_2bilihz';
             const templateID = 'template_a4kxku3';
 
-            // LOG DE DIAGNÓSTICO
-            console.log("Intentando enviar mail...");
-            console.log("Service ID:", serviceID);
-            console.log("Template ID:", templateID);
-
             // ENVÍO DEL FORMULARIO
+            // 'this' captura automáticamente todos los campos con atributo 'name'
             emailjs.sendForm(serviceID, templateID, this)
                 .then(() => {
                     // ÉXITO
@@ -43,19 +38,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 .catch((err) => {
                     // ERROR
                     console.error("ERROR AL ENVIAR:", err);
-                    
-                    // Si el error es 400 "Template ID not found", lo mostramos claro
-                    if (err.status === 400) {
-                        alert('❌ Error: EmailJS no reconoce el Template ID. Revisa que la plantilla esté GUARDADA en el panel.');
-                    } else {
-                        alert('❌ Hubo un error al enviar: ' + JSON.stringify(err));
-                    }
-
+                    alert('❌ Hubo un error al enviar: ' + JSON.stringify(err));
                     btnSubmit.innerText = 'Solicitar Presupuesto';
                     btnSubmit.disabled = false;
                 });
         });
-    } else {
-        console.error("Error: No se encontró el formulario con ID 'form-reserva'");
     }
 });
