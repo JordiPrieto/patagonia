@@ -1,29 +1,50 @@
-emailjs.init("TIEqcLrCyLBLPkOGZ"); 
-const serviceID = 'service_2bilihz';
-const templateID = 'template_a4kxku3';
+/**
+ * CONFIGURACIÓN DE EMAILJS - PATAGONIA RENTAL
+ */
 
-const btn = document.getElementById('form-reserva');
+// 1. Inicialización con tu Public Key
+emailjs.init("TIEqcLrCyLBLPkOGZ");
 
-document.getElementById('form-reserva').addEventListener('submit', function(event) {
-   event.preventDefault(); // Evita que la página se recargue
+// 2. Selección de los elementos del DOM
+const formulario = document.getElementById('form-reserva');
+const btnSubmit = document.querySelector('.btn-submit');
 
-    const btnSubmit = document.querySelector('.btn-submit');
-    btnSubmit.innerText = 'Enviando...';
-    btnSubmit.disabled = true;
+// 3. Verificamos que el formulario exista para evitar errores
+if (formulario) {
+    formulario.addEventListener('submit', function(event) {
+        event.preventDefault(); // Detenemos la recarga de la página
 
-   // Estos IDs los sacas de tu panel de EmailJS
-    const serviceID = 'default_service'; // O tu Service ID
-    const templateID = 'TU_TEMPLATE_ID';
+        // Feedback visual: Cambiamos el texto del botón y lo bloqueamos
+        btnSubmit.innerText = 'Enviando...';
+        btnSubmit.disabled = true;
 
-    emailjs.sendForm(serviceID, templateID, this)
-    .then(() => {
-        btnSubmit.innerText = 'Solicitar Presupuesto';
-        btnSubmit.disabled = false;
-        alert('✅ ¡Solicitud enviada con éxito! Nos contactaremos pronto.');
-      this.reset(); // Limpia el formulario
-    }, (err) => {
-        btnSubmit.innerText = 'Solicitar Presupuesto';
-        btnSubmit.disabled = false;
-        alert('❌ Error al enviar: ' + JSON.stringify(err));
+        // TUS IDS REALES DE EMAILJS
+        const serviceID = 'service_2bilihz';
+        const templateID = 'template_a4kxku3';
+
+        // 4. Envío del formulario
+        // 'this' representa al formulario actual con todos sus datos
+        emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+                // CASO ÉXITO
+                alert('✅ ¡Solicitud enviada con éxito! Nos contactaremos pronto.');
+                
+                // Restauramos el botón
+                btnSubmit.innerText = 'Solicitar Presupuesto';
+                btnSubmit.disabled = false;
+                
+                // Limpiamos los campos del formulario
+                formulario.reset();
+            })
+            .catch((err) => {
+                // CASO ERROR
+                alert('❌ Hubo un error al enviar: ' + JSON.stringify(err));
+                
+                // Restauramos el botón para que el usuario pueda intentar de nuevo
+                btnSubmit.innerText = 'Solicitar Presupuesto';
+                btnSubmit.disabled = false;
+            });
     });
-});
+} else {
+    console.error("Error: No se encontró el formulario con ID 'form-reserva'");
+}
